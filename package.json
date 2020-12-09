@@ -1,0 +1,16 @@
+{
+  "name": "fortune-teller-bot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
