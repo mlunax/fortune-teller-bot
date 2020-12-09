@@ -1,0 +1,6 @@
+version: "3"
+services:
+  fortune-teller:
+    build: .
+    volumes:
+      - ./meta:/app/meta

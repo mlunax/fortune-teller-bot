@@ -7,7 +7,7 @@ const {
   message,
   filename,
   excludeFileName,
-} = require("../config.json");
+} = require("../meta/config.json");
 const client = new Discord.Client();
 
 const file = fs.readFileSync(filename, "utf8").toString().split("\n");
