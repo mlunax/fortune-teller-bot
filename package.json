@@ -1,14 +1,14 @@
 {
   "name": "fortune-teller-bot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {"name":"mlunax", "email": "lunax@mlunax.com"},
+  "license": "MIT",
   "devDependencies": {},
   "dependencies": {
     "discord.js": "^12.5.1"
