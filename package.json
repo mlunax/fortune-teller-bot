@@ -7,10 +7,14 @@
     "start": "node src/index.js"
   },
   "keywords": [],
-  "author": {"name":"mlunax", "email": "lunax@mlunax.com"},
+  "author": {
+    "name": "mlunax",
+    "email": "lunax@mlunax.com"
+  },
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "moment": "^2.29.1"
   }
 }
