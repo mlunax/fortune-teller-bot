@@ -1,16 +1,8 @@
 const Discord = require("discord.js");
-const { random2hu, sendToChannel } = require("./random2hu.js");
-const { initMessageCron, jobs } = require("./cron.js");
-const {
-  token,
-  channel,
-  message,
-  filename,
-  excludeFileName,
-  timers,
-} = require("../meta/config.json");
+const { runRandom2hu } = require("./random2hu.js");
+const { initMessageCron, jobs, initCron } = require("./cron.js");
+const { token, timers } = require("../meta/config.json");
 const client = new Discord.Client();
-const randomItem = random2hu(filename, excludeFileName);
 
 client.on("ready", () => {
   console.log(`Logged: ${client.user.tag}`);
@@ -21,6 +13,8 @@ timers.sort((a, b) => a.h - b.h);
 for (const t of timers) {
   initMessageCron(t.h, t.m, t.msg, t.channel, client);
 }
+
+initCron(0, 0, () => runRandom2hu(client));
 
 // console.log(timers[0].h);
 
