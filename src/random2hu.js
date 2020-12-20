@@ -14,27 +14,24 @@ function runRandom2hu(client) {
 function random2hu(fName, eFName) {
   const file = fs.readFileSync(fName, "utf8").toString().split("\n");
   const fileE = fs.readFileSync(eFName, "utf8").toString().split("\n");
-  let rI;
+  const dataWithoutExceptions = file.filter((x) => !fileE.includes(x));
 
   if (file.length + 1 <= fileE.length) {
     console.log("Koniec 2hu");
-    rI = "Brak dziewczynki, zrestaruj listę";
-  } else {
-    do {
-      const randomNumber = Math.floor(Math.random() * file.length);
-      rI = file[randomNumber];
-    } while (fileE.includes(rI));
+    return "Brak dziewczynki, zrestaruj listę";
   }
-  return rI;
+
+  const randomNumber = Math.floor(Math.random() * dataWithoutExceptions.length);
+  return dataWithoutExceptions[randomNumber];
 }
 
-function sendToChannel(client, rI, eFName) {
+async function sendToChannel(client, rI, eFName) {
   console.log(`It's time to new Fortune Tells`);
-  const msg = message.replace("${2hu}", rI);
-  client.channels.fetch(channel).then((ch) => ch.send(`${msg}`));
-  fs.appendFileSync(eFName, rI + "\n");
-  console.log(`${msg}
-  `);
+  const messageToSend = message.replace("${2hu}", rI);
+  const ch = await client.channels.fetch(channel);
+  ch.send(messageToSend);
+  fs.appendFileSync(eFName, `${rI}\n`);
+  console.log(`${messageToSend}\n`);
 }
 
-module.exports = { runRandom2hu };
+module.exports = runRandom2hu;
