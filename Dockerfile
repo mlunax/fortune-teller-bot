@@ -3,4 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-CMD [ "npm", "start" ]
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+# CMD [ "npm", "start" ]
+ENTRYPOINT ["/docker-entrypoint.sh"]
