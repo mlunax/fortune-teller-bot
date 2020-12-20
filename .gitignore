@@ -1,5 +1,8 @@
 node_modules/
 
+
 # secrets
 input.txt
+Einput.txt
 config.json
+config.prod.json
