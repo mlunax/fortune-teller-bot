@@ -18,4 +18,13 @@ function random2hu(filename, excludeFileName) {
   return randomItem;
 }
 
-module.exports = { random2hu };
+function sendToChannel(client, randomItem, excludeFileName) {
+  console.log(`It's time to new Fortune Tells`);
+  const msg = message.replace("${2hu}", randomItem);
+  client.channels.fetch(channel).then((ch) => ch.send(`${msg}`));
+  fs.appendFileSync(excludeFileName, randomItem + "\n");
+  console.log(`${msg}
+  `);
+}
+
+module.exports = { random2hu, sendToChannel };
